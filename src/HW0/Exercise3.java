@@ -1,17 +1,16 @@
 package HW0;
 
-public class Exercise2 {
+public class Exercise3 {
     public static int max(int[] m) {
         if (m.length == 0) {
             throw new Error("Nothing to return");
         }
         int max = m[0];
-        int index = 1;
-        while(index < m.length) {
-            if(m[index] > max) {
+
+        for (int index = 1; index < m.length; index += 1) {
+            if (m[index] > max) {
                 max = m[index];
             }
-            index += 1;
         }
         System.out.println(max);
         return max;
