@@ -2,6 +2,10 @@ package textbook.chap3.section1;
 
 import java.util.Arrays;
 
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+
 /**
  * Test the Sort class.
  */
@@ -9,8 +13,9 @@ public class TestSort {
     /**
      * Test the Sort.sort method.
      */
-    public static void testSort() {
-        String[] input = {"I", "have", "an", "egg"};
+    @Test
+    public void testSort() {
+        String[] input = {"i", "have", "an", "egg"};
         String[] expected = {"an", "egg", "have", "i"};
         Sort.sort(input);
         if (!Arrays.equals(input, expected)) {
@@ -23,9 +28,38 @@ public class TestSort {
                 return;
             }
         }
+        assertArrayEquals(expected, input);
     }
 
-    public static void main(String[] args) {
-        testSort();
+
+    /**
+     * Test ths Sort.swap method
+     */
+    @Test
+    public void testSwap() {
+        String[] input = {"i", "have", "an", "egg"};
+        int a = 0;
+        int b = 2;
+        String[] expected = {"an", "have", "i", "egg"};
+        Sort.swap(input, a, b);
+        assertArrayEquals(input, expected);
+    }
+
+    /**
+     * Test the Sort.findSmallest method.
+     *
+     * @source Got help with string compares from google.
+     */
+    @Test
+    public void testFindSmallest() {
+        String[] input = {"i", "have", "an", "egg"};
+        int expected = 2;
+        int actual =  Sort.findSmallest(input, 0);
+        assertEquals(expected, actual);
+
+        String[] input2 = {"there", "are", "many", "pigs"};
+        int expected2 = 2;
+        int actual2 = Sort.findSmallest(input2, 2);
+        assertEquals(expected2, actual2);
     }
 }
